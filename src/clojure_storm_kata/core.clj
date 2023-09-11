@@ -10,7 +10,7 @@
     (setInterval [_ command initialDelaySec periodSec]
       (.scheduleAtFixedRate service command initialDelaySec periodSec TimeUnit/SECONDS))
     (scheduleOnce [_ command]
-      (future-call command))))
+      @(future-call command))))
 
 (defn unleash [_ {:keys [test? environment instance-id endpoint]}]
   (if test?
